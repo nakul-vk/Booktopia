@@ -1,10 +1,10 @@
 import React from "react";
 
-const PrimaryBtn = ({ text, icon, styles, handleClick }) => {
+const PrimaryBtn = ({ text, icon, styles, notify, setDisplay }) => {
   return (
     <button
       className={`w-full h-24 md:h-28 lg:h-32 rounded-full p-5 font-spline font-bold flex justify-between items-center ${styles}`}
-      onClick={() => handleClick("Subscription unsuccessful", "error")}
+      onClick={() => notify("Subscription successful", "success")}
     >
       {text}
       <span>{icon}</span>

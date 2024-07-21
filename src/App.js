@@ -12,7 +12,10 @@ const App = () => {
   // const dispatch = useDispatch();
 
   const notifySnack = (message, type) => {
-    setNotify({ message, type });
+    setNotify({
+      message,
+      type,
+    });
     setDisplay(true);
   };
 
