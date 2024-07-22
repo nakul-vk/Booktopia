@@ -1,3 +1,3 @@
-Add a global variable bookName or url.
-In trending, while changing the same should be changed.
-In app while review renders, it should have an argument which is the url, which then calls the api, while loading occurs.
+Add animation to trending, welcome.
+add snackbar to every page.
+Add restricted functionality to submisssions

@@ -1,11 +1,12 @@
 import React from "react";
+import { Rating } from "../components";
 
-const Filters = ({ placeholder, isSelected }) => {
+const Filters = ({ placeholder, isSelected, addFilter }) => {
   const className = "filter px-5 py-2 rounded-full";
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(placeholder.toLowerCase());
+    addFilter(placeholder);
   };
 
   return (
@@ -17,7 +18,7 @@ const Filters = ({ placeholder, isSelected }) => {
       }
       onClick={handleClick}
     >
-      {placeholder}
+      {Number(placeholder) ? <Rating rating={placeholder} /> : placeholder}
     </button>
   );
 };

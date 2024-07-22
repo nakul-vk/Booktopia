@@ -4,30 +4,39 @@ import {
   Navbar,
   SearchBar,
   Filters,
-  Rating,
   SearchResults,
 } from "../components";
 import { filters } from "../utils/filtersPlaceholder";
 
 const Browse = () => {
   const [data, setData] = useState(filters);
-  const [selectedFilters, setSelectedFilters] = useState([
-    "Fyodor Dostoevsky",
-    "Thriller",
-    <Rating rating={4.5} />,
-    <Rating rating={5} />,
-  ]);
+  const [selectedFilters, setSelectedFilters] = useState([]);
+
+  const addFilter = (val) => {
+    if (selectedFilters.find((elem) => elem == val) == undefined) {
+      setSelectedFilters([...selectedFilters, val]);
+    } else {
+      setSelectedFilters(selectedFilters.filter((elem) => elem != val));
+    }
+  };
 
   return (
     <section className="search text-center w-screen min-h-screen font-spline pb-16">
       <Title />
       <Navbar />
       <SearchBar />
-      <div className="selected-filters w-10/12 text-left  mt-16 relative left-1/2 -translate-x-1/2 flex flex-row flex-wrap items-center gap-4">
-        <h2 className="font-bold mr-10">Filters:</h2>
-        {selectedFilters.map((items, index) => (
-          <Filters key={index} placeholder={items} isSelected={true} />
-        ))}
+      <div className="selected-filters w-10/12 mt-16 relative left-1/2 -translate-x-1/2 flex">
+        <h2 className="font-bold mr-10 pt-2">Filters:</h2>
+        <div className="w-full flex flex-row flex-wrap gap-4">
+          {selectedFilters.map((items, index) => (
+            <Filters
+              key={index}
+              placeholder={items}
+              isSelected={true}
+              addFilter={addFilter}
+            />
+          ))}
+        </div>
       </div>
       <section className="w-10/12 flex flex-row justify-center relative left-1/2 -translate-x-1/2 mt-10">
         <section className="w-2/5 text-left">
@@ -38,9 +47,8 @@ const Browse = () => {
                 {values.map((value, index) => (
                   <Filters
                     key={index}
-                    placeholder={
-                      Number(value) ? <Rating rating={value} /> : value
-                    }
+                    placeholder={value}
+                    addFilter={addFilter}
                   />
                 ))}
               </div>
@@ -49,9 +57,9 @@ const Browse = () => {
         </section>
         <div className="w-1 h-auto bg-title rounded-lg" />
         <section className="w-3/5">
-          {/* {Array.from({ length: 6 }).map((result, index) => (
+          {Array.from({ length: 6 }).map((result, index) => (
             <SearchResults key={index} />
-          ))} */}
+          ))}
         </section>
       </section>
     </section>

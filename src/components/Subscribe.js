@@ -21,7 +21,7 @@ const Subscribe = ({ handleClick }) => {
           text="Subscribe"
           icon={<IoIosArrowForward />}
           styles="bg-yellow text-white"
-          notify={handleClick}
+          handleClick={handleClick}
         />
       </div>
     </section>
