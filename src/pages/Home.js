@@ -8,15 +8,21 @@ import {
   Subscribe,
   Footer,
 } from "../components";
+import { useAnimate, motion, stagger } from "framer-motion";
 
 const Home = ({ subscribe }) => {
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-  });
+  const [scope, animate] = useAnimate();
+  const sequence = [
+    [".letter", { opacity: [0, 1] }, { duration: 0.1, delay: stagger(0.05) }],
+  ];
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 1500);
+  // }, []);
 
   return (
     <div>
@@ -26,14 +32,32 @@ const Home = ({ subscribe }) => {
         <Trending />
       </section>
       <section className="w-screen min-h-screen bg-title flex flex-col justify-between text-3xl text-body sm:text-5xl">
-        <div className="pt-10 pl-5 font-spline  font-bold lg:text-7xl lg:pt-20 lg:pl-32 lg:w-10/12">
-          <h2>
-            Welcome to <span className="text-yellow">Booktopia,</span>
-          </h2>
-          <h2>
-            the ultimate haven for bookworkms craving juicy reviews and
-            insightful takes on their favorite reads.
-          </h2>
+        <div
+          ref={scope}
+          className="pt-10 pl-5 font-spline  font-bold lg:text-7xl lg:pt-20 lg:pl-32 lg:w-10/12"
+        >
+          <motion.h2
+            whileInView={() => animate(sequence)}
+            viewport={{ once: true }}
+            className="welcome-title inline-block"
+          >
+            {/* Welcome to{" "}
+            <span className="text-yellow inline-block">Booktopia,</span> */}
+            {"Welcome to Booktopia,".split("").map((letter, index) => (
+              <span className="letter" key={index}>
+                {letter}
+              </span>
+            ))}
+          </motion.h2>
+          <motion.h2 className="welcome-text inline-block">
+            {"the ultimate haven for bookworkms craving juicy reviews and\n insightful takes on their favorite reads."
+              .split("")
+              .map((letter, index) => (
+                <span className="letter" key={index}>
+                  {letter}
+                </span>
+              ))}
+          </motion.h2>
         </div>
         <SocialNetwork />
       </section>

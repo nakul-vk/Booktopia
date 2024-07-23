@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
 import { Rating } from "../components";
 import { Link } from "react-router-dom";
+import { stagger, useAnimate } from "framer-motion";
 
 const Trending = () => {
   const data = [
@@ -12,6 +13,8 @@ const Trending = () => {
       title: "The Brothers Karamazov",
       author: "Fyodor Dostoevsky",
       rating: "5",
+      quote:
+        "The more I love humanity in general, the less I love man in particular",
     },
     {
       id: 2,
@@ -19,6 +22,8 @@ const Trending = () => {
       title: "Pride and Prejudice",
       author: "Jane Austen",
       rating: "3.5",
+      quote:
+        "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife",
     },
     {
       id: 3,
@@ -26,6 +31,8 @@ const Trending = () => {
       title: "Harry Potter and the Chamber of Secrets",
       author: "JK Rowling",
       rating: "4",
+      quote:
+        "Oh well... I'd just been thinking, if you had died, you'd have been welcome to share my toilet",
     },
     {
       id: 4,
@@ -33,6 +40,8 @@ const Trending = () => {
       title: "To Kill A Mockingbird",
       author: "Harper Lee",
       rating: "4.5",
+      quote:
+        "The one thing that doesn't abide by majority rule is a person's conscience",
     },
     {
       id: 5,
@@ -40,38 +49,54 @@ const Trending = () => {
       title: "Becoming",
       author: "Michelle Obama",
       rating: "2",
+      quote: "God gave us this platform for a reason, let's not waste it",
     },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const [scope, animate] = useAnimate();
+
+  const rightSequence = [
+    [".bg-img", { opacity: [0, 1], x: [700, 0] }, { duration: 0.5 }],
+    ["li", { opacity: [0, 1], y: [100, 0] }, { delay: stagger(0.1) }],
+  ];
+
+  const leftSequence = [
+    [".bg-img", { opacity: [0, 1], x: [-700, 0] }, { duration: 0.5 }],
+    ["li", { opacity: [0, 1], y: [100, 0] }, { delay: stagger(0.1) }],
+  ];
+
+  useEffect(() => {
+    animate(rightSequence);
+  }, []);
+
   const handleLeftClick = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? data.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
+    animate(leftSequence);
   };
 
   const handleRightClick = () => {
     const isLastIndex = currentIndex === data.length - 1;
     const newIndex = isLastIndex ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
+    animate(rightSequence);
   };
 
   return (
-    <section className="trending text-left w-10/12 relative left-1/2 -translate-x-1/2 text-base mt-16 pb-16 font-spline text-body">
-      {/* <h1 className="font-spline font-bold sm:text-3xl">Trending Books</h1> */}
-      <div
-        className="container rounded-lg w-full h-96 text-body mt-11 flex justify-between group overflow-y-hidden bg-title"
-        // style={{
-        //   // background: `linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(147,147,182,1) 57%, rgba(255,255,255,1) 100%), url(${data[currentIndex].img}) center cover no-repeat`,
-        //   // backgroundColor:
-        //   //   "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(147,147,182,1) 57%, rgba(255,255,255,1) 100%)",
-        //   backgroundImage: `url(${data[currentIndex].img})`,
-        //   backgroundPosition: "center",
-        //   backgroundSize: "cover",
-        //   backgroundRepeat: "no-repeat",
-        // }}
-      >
+    <section
+      ref={scope}
+      className="trending text-left w-10/12 relative left-1/2 -translate-x-1/2 text-base mt-16 pb-16 font-spline text-body"
+    >
+      <motion.div
+        className="bg-img absolute -z-10 w-full h-96 rounded-lg overflow-hidden"
+        style={{
+          background: `linear-gradient(0deg, rgba(1,40,55,1) 0%, rgba(1,40,57,0.44870448179271705) 97%), url(${data[currentIndex].img}) center/cover no-repeat fixed`,
+        }}
+      />
+      <div className="container rounded-lg w-full h-96 text-body mt-11 flex justify-between group overflow-y-hidden">
         <button
           className=" text-3xl md:text-5xl lg:text-6xl"
           onClick={handleLeftClick}
@@ -81,20 +106,23 @@ const Trending = () => {
 
         <div className="book w-full flex self-end">
           <Link to={`/reviews/books`}>
-            <motion.div className="py-5 list-disc self-end font-bold text-xl transition-all sm:p-11">
-              <motion.p className="text-xl sm:text-3xl">
+            <motion.ul className="container py-5 list-none self-end font-bold text-xl transition-all sm:p-11">
+              <motion.li className="quote italic font-normal text-base sm:text-xl">
+                "{data[currentIndex].quote}"
+              </motion.li>
+              <motion.li className="text-xl sm:text-3xl">
                 {data[currentIndex].title}
-              </motion.p>
-              <p className="text-base sm:text-xl">
+              </motion.li>
+              <motion.li className="text-base sm:text-xl">
                 {data[currentIndex].author}
-              </p>
-              {
+              </motion.li>
+              <motion.li>
                 <Rating
                   className="text-base sm:text-xl"
                   rating={data[currentIndex].rating}
                 />
-              }
-            </motion.div>
+              </motion.li>
+            </motion.ul>
           </Link>
         </div>
         <button
