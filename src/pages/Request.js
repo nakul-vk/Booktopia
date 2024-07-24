@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Title, Navbar } from "../components";
+import { Title, Navbar, PrimaryBtn, PrimaryInput } from "../components";
 import { IoIosArrowForward } from "react-icons/io";
 
 const Request = () => {
@@ -42,6 +42,10 @@ const Request = () => {
     setCurrentIndex(Math.floor(Math.random() * quotes.length));
   };
 
+  const handleClick = () => {
+    getRandomQuote();
+  };
+
   useEffect(() => {
     getRandomQuote();
   }, []);
@@ -55,18 +59,25 @@ const Request = () => {
           <h2 className="italic">{quotes[currentIndex].quote}</h2>
           <h2 className="font-bold mt-10">- {quotes[currentIndex].quoter}</h2>
         </div>
-        <div className="w-2/3 self-end pl-5 text-3xl">
-          <form action="">
+        <div className="w-2/3 self-end ml-5 text-3xl ">
+          <form action="" className="flex flex-col items-center">
             {inputs.map(({ placeholder, type }, index) => (
-              <input
+              /* <input
                 type={type}
                 inputMode={type === "number" && "numeric"}
                 className="outline-none w-full  border-solid border-yellow border-4 rounded-full p-5  text-title  font-spline font-bold mb-5"
                 key={index}
                 placeholder={placeholder}
+              /> */
+              <PrimaryInput
+                key={index}
+                type={type}
+                placeholder={placeholder}
+                styles="h-24 m-5 border-yellow text-title"
+                handleClick={handleClick}
               />
             ))}
-            <button
+            {/* <button
               className="text-title w-full bg-white p-5 font-spline font-bold flex justify-between items-center text-3xl border-black border-4 rounded-full"
               onClick={(e) => {
                 e.preventDefault();
@@ -77,7 +88,12 @@ const Request = () => {
               <span>
                 <IoIosArrowForward />
               </span>
-            </button>
+            </button> */}
+            <PrimaryBtn
+              text="Submit"
+              icon={<IoIosArrowForward />}
+              styles="bg-yellow text-white h-24"
+            />
           </form>
         </div>
       </section>

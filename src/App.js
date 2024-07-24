@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home, Review, Browse, Request, Login } from "./pages";
-import { SnackBar } from "./components";
+import { SnackBar, BackgroundStar } from "./components";
 // import { useSelector, useDispatch } from "react-redux";
 // import { set } from "./app/bookNameSlice";
 
@@ -22,6 +22,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="overflow-hidden">
+        {/* <BackgroundStar type="white" styles={{ top: "100%", left: "30%" }} />
+        <BackgroundStar type="white" styles={{ top: "40%", left: "80%" }} />
+        <BackgroundStar type="dark" styles={{ top: "200%", left: "50%" }} />
+        <BackgroundStar type="dark" styles={{ top: "20%", left: "20%" }} /> */}
+
         <Routes>
           <Route path="/" exact element={<Home subscribe={notifySnack} />} />
           <Route path={`/reviews/books`} element={<Review />} />

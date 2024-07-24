@@ -15,12 +15,12 @@ const Subscribe = ({ handleClick }) => {
         <PrimaryInput
           type="email"
           placeholder="name@gmail.com"
-          styles="h-24 md:h-28 lg:h-32 border-yellow text-title"
+          styles="h-24 md:h-28 lg:h-32 m-10 border-yellow text-title"
         />
         <PrimaryBtn
           text="Subscribe"
           icon={<IoIosArrowForward />}
-          styles="bg-yellow text-white"
+          styles="bg-yellow text-white h-24 md:h-28 lg:h-32"
           handleClick={handleClick}
         />
       </div>

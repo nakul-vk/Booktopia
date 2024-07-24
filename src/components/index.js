@@ -16,3 +16,4 @@ export { default as SnackBar } from "./SnackBar";
 export { default as Social } from "./Social";
 export { default as PrimaryBtn } from "./PrimaryBtn";
 export { default as PrimaryInput } from "./PrimaryInput";
+export { default as BackgroundStar } from "./BackgroundStar";

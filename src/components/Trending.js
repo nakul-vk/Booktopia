@@ -91,7 +91,7 @@ const Trending = () => {
       className="trending text-left w-10/12 relative left-1/2 -translate-x-1/2 text-base mt-16 pb-16 font-spline text-body"
     >
       <motion.div
-        className="bg-img absolute -z-10 w-full h-96 rounded-lg overflow-hidden"
+        className="bg-img absolute -z-20 w-full h-96 rounded-lg overflow-hidden"
         style={{
           background: `linear-gradient(0deg, rgba(1,40,55,1) 0%, rgba(1,40,57,0.44870448179271705) 97%), url(${data[currentIndex].img}) center/cover no-repeat fixed`,
         }}
@@ -104,7 +104,7 @@ const Trending = () => {
           <IoIosArrowBack />
         </button>
 
-        <div className="book w-full flex self-end">
+        <div className="book w-full flex self-end ">
           <Link to={`/reviews/books`}>
             <motion.ul className="container py-5 list-none self-end font-bold text-xl transition-all sm:p-11">
               <motion.li className="quote italic font-normal text-base sm:text-xl">

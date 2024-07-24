@@ -1,14 +1,16 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const PrimaryBtn = ({ text, icon, styles, handleClick }) => {
   return (
-    <button
-      className={`w-full h-24 md:h-28 lg:h-32 rounded-full p-5 font-spline font-bold flex justify-between items-center ${styles}`}
+    <motion.button
+      whileHover={{ scale: 1.05, boxShadow: "0px 4px 7px rgba(0,0,0,0.6)" }}
+      className={`w-full rounded-full p-5 font-spline font-bold flex justify-between items-center ${styles}`}
       onClick={() => handleClick("Subscription successful", "success")}
     >
       {text}
       <span>{icon}</span>
-    </button>
+    </motion.button>
   );
 };
 

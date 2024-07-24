@@ -14,7 +14,10 @@ const Navbar = () => {
   const sequence = [[".links", { opacity: [0, 1] }, { delay: stagger(0.25) }]];
 
   useEffect(() => {
-    animate(sequence);
+    if (scope.current) {
+      console.log(scope.current);
+      animate(sequence);
+    }
   }, []);
 
   return (
@@ -24,7 +27,10 @@ const Navbar = () => {
      text-title text-base mt-5"
     >
       {links.map((link, index) => (
-        <motion.div key={index} whileHover={{ scale: 1.1 }}>
+        <motion.div
+          key={index}
+          whileHover={{ scale: 1.1, textShadow: "0px 4px 7px rgba(0,0,0,0.6)" }}
+        >
           <HashLink className="links" smooth={true} to={link.link}>
             {link.children}
           </HashLink>

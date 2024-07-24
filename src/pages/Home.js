@@ -37,14 +37,23 @@ const Home = ({ subscribe }) => {
           className="pt-10 pl-5 font-spline  font-bold lg:text-7xl lg:pt-20 lg:pl-32 lg:w-10/12"
         >
           <motion.h2
-            whileInView={() => animate(sequence)}
+            whileInView={() => {
+              if (scope.current) {
+                // scope.current && animate(sequence);
+                console.log(scope.current);
+                animate(sequence);
+              }
+            }}
             viewport={{ once: true }}
             className="welcome-title inline-block"
           >
             {/* Welcome to{" "}
             <span className="text-yellow inline-block">Booktopia,</span> */}
             {"Welcome to Booktopia,".split("").map((letter, index) => (
-              <span className="letter" key={index}>
+              <span
+                className={letter === "B" ? "letter text-yellow" : "letter"}
+                key={index}
+              >
                 {letter}
               </span>
             ))}
