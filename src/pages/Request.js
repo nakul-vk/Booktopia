@@ -54,12 +54,12 @@ const Request = () => {
     <section className="w-screen text-center font-spline">
       <Title />
       <Navbar />
-      <section className=" w-10/12 relative left-1/2 -translate-x-1/2 flex flex-row items-center justify-center pt-12 pb-12">
-        <div className="w-1/3  bg-title text-white rounded-lg px-10 py-20 text-3xl">
-          <h2 className="italic">{quotes[currentIndex].quote}</h2>
+      <section className=" w-10/12 relative left-1/2 -translate-x-1/2 flex flex-col-reverse lg:flex-row items-center justify-center pt-12 pb-12">
+        <div className="w-full lg:w-1/3 mt-10 lg:mt-0 bg-title text-white rounded-lg px-10 py-20 text-xl md:text-3xl">
+          <h2 className="italic">"{quotes[currentIndex].quote}"</h2>
           <h2 className="font-bold mt-10">- {quotes[currentIndex].quoter}</h2>
         </div>
-        <div className="w-2/3 self-end ml-5 text-3xl ">
+        <div className="w-full lg:w-2/3 self-end ml-5 text-xl md:text-3xl ">
           <form action="" className="flex flex-col items-center">
             {inputs.map(({ placeholder, type }, index) => (
               /* <input
@@ -73,7 +73,7 @@ const Request = () => {
                 key={index}
                 type={type}
                 placeholder={placeholder}
-                styles="h-24 m-5 border-yellow text-title"
+                styles="m-5 border-yellow text-title"
                 handleClick={handleClick}
               />
             ))}
@@ -92,7 +92,7 @@ const Request = () => {
             <PrimaryBtn
               text="Submit"
               icon={<IoIosArrowForward />}
-              styles="bg-yellow text-white h-24"
+              styles="bg-yellow text-white h-16 md:h-24"
             />
           </form>
         </div>

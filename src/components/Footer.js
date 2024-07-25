@@ -4,7 +4,7 @@ import { Social } from "../components";
 
 const Footer = () => {
   return (
-    <section className="flex flex-col items-center mt-10 md:mt-20 text-base font-spline">
+    <section className="flex flex-col items-center mt-10 md:mt-20 text-sm md:text-base font-spline">
       <div className=" flex justify-between w-10/12">
         {/* <div>
           <p className="text-black font-bold">Policies</p>

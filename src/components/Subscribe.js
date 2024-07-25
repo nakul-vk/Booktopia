@@ -2,7 +2,7 @@ import React from "react";
 import { PrimaryBtn, PrimaryInput } from "../components";
 import { IoIosArrowForward } from "react-icons/io";
 
-const Subscribe = ({ handleClick }) => {
+const Subscribe = () => {
   return (
     <section
       className="cta-2 text-3xl md:text-5xl lg:text-6xl mt-12"
@@ -21,7 +21,6 @@ const Subscribe = ({ handleClick }) => {
           text="Subscribe"
           icon={<IoIosArrowForward />}
           styles="bg-yellow text-white h-24 md:h-28 lg:h-32"
-          handleClick={handleClick}
         />
       </div>
     </section>

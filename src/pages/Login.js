@@ -15,7 +15,7 @@ const Login = () => {
   }
 
   return (
-    <section className="login w-screen h-screen">
+    <section className="login w-screen">
       <Title />
       <Navbar />
       <div className="card w-10/12 relative left-1/2 -translate-x-1/2 mt-10 rounded-lg">
@@ -25,9 +25,9 @@ const Login = () => {
             name="username"
             id="username"
             placeholder="username"
-            className="w-full text-3xl border-solid border-yellow border-4 rounded-full p-5  text-black  font-spline font-bold outline-none mb-10"
+            className="w-full text-xl md:text-3xl border-solid border-yellow border-4 rounded-full p-5  text-black  font-spline font-bold outline-none mb-10"
           />
-          <div className="w-full text-3xl border-solid border-yellow border-4 rounded-full p-5  text-black  font-spline font-bold mb-10 flex flex-row justify-between items-center">
+          <div className="w-full text-xl md:text-3xl border-solid border-yellow border-4 rounded-full p-5  text-black  font-spline font-bold mb-10 flex flex-row justify-between items-center">
             <input
               type={type}
               name="password"
@@ -46,7 +46,7 @@ const Login = () => {
               <FaRegEyeSlash className={regEyeSlash} />
             </button>
           </div>
-          <button className="text-title w-full bg-white p-5 font-spline font-bold flex justify-between items-center text-3xl border-black border-4 rounded-full">
+          <button className="text-title w-full bg-white p-5 font-spline font-bold flex justify-between items-center text-xl md:text-3xl border-black border-4 rounded-full">
             Login
             <span>
               <IoIosArrowForward />

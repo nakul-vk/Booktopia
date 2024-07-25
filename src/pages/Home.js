@@ -10,19 +10,13 @@ import {
 } from "../components";
 import { useAnimate, motion, stagger } from "framer-motion";
 
-const Home = ({ subscribe }) => {
+const Home = () => {
   const [loading, setLoading] = useState(true);
 
   const [scope, animate] = useAnimate();
   const sequence = [
     [".letter", { opacity: [0, 1] }, { duration: 0.1, delay: stagger(0.05) }],
   ];
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 1500);
-  // }, []);
 
   return (
     <div>
@@ -43,8 +37,6 @@ const Home = ({ subscribe }) => {
             viewport={{ once: true }}
             className="welcome-title inline-block"
           >
-            {/* Welcome to{" "}
-            <span className="text-yellow inline-block">Booktopia,</span> */}
             {"Welcome to Booktopia,".split("").map((letter, index) => (
               <span
                 className={letter === "B" ? "letter text-yellow" : "letter"}
@@ -83,7 +75,7 @@ const Home = ({ subscribe }) => {
           </div>
         </div>
       </section>
-      <Subscribe handleClick={subscribe} />
+      <Subscribe />
       <Footer />
     </div>
   );
