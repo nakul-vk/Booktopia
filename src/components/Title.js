@@ -17,7 +17,6 @@ const Title = () => {
   useEffect(() => {
     setInterval(() => {
       if (scope.current) {
-        console.log(scope.current);
         animate(titleSequence);
       }
     }, 5000);

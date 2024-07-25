@@ -23,5 +23,5 @@ export const filters = [
       "Thriller",
     ],
   },
-  { filter: "ratings", values: [3, 3.5, 4, 4.5, 5] },
+  { filter: "Ratings", values: [3, 3.5, 4, 4.5, 5] },
 ];

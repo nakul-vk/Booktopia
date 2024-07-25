@@ -13,8 +13,8 @@ module.exports = {
         yellow: "#FCA311",
         quotes: "#f7820c",
       },
-      // spacing: {
-      //   xl: "5rem",
+      // objectPosition: {
+
       // },
       keyframes: {
         notify: {

@@ -38,11 +38,7 @@ const Home = ({ subscribe }) => {
         >
           <motion.h2
             whileInView={() => {
-              if (scope.current) {
-                // scope.current && animate(sequence);
-                console.log(scope.current);
-                animate(sequence);
-              }
+              scope.current && animate(sequence);
             }}
             viewport={{ once: true }}
             className="welcome-title inline-block"

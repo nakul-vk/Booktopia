@@ -15,7 +15,6 @@ const Navbar = () => {
 
   useEffect(() => {
     if (scope.current) {
-      console.log(scope.current);
       animate(sequence);
     }
   }, []);

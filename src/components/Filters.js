@@ -2,7 +2,7 @@ import React from "react";
 import { Rating } from "../components";
 
 const Filters = ({ placeholder, isSelected, addFilter }) => {
-  const className = "filter px-5 py-2 rounded-full";
+  const className = "filter px-2 py-1 md:px-5 md:py-2 rounded-full";
 
   const handleClick = (e) => {
     e.preventDefault();
