@@ -7,8 +7,8 @@ const Rating = ({ rating, className }) => {
 
   return (
     <div className="flex">
-      {Array.from({ length: wholeRating }).map((index) => (
-        <ImStarFull className={className} />
+      {Array.from({ length: wholeRating }).map((elem, index) => (
+        <ImStarFull key={index} className={className} />
       ))}
       {ratingRemainder !== 0 && <ImStarHalf className={className} />}
     </div>
