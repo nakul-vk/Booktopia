@@ -1,8 +1,18 @@
 import React from "react";
 import { PrimaryBtn, PrimaryInput } from "../components";
 import { IoIosArrowForward } from "react-icons/io";
+import { change } from "../features/book/bookSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const Subscribe = () => {
+  const book = useSelector((state) => state.book.value);
+  const dispatch = useDispatch();
+
+  const changeBook = () => {
+    dispatch(change());
+    console.log(book);
+  };
+
   return (
     <section
       className="cta-2 text-3xl md:text-5xl lg:text-6xl mt-12"
@@ -21,6 +31,7 @@ const Subscribe = () => {
           text="Subscribe"
           icon={<IoIosArrowForward />}
           styles="bg-yellow text-white h-24 md:h-28 lg:h-32"
+          handleClick={changeBook}
         />
       </div>
     </section>

@@ -9,14 +9,23 @@ import {
   Footer,
 } from "../components";
 import { useAnimate, motion, stagger } from "framer-motion";
+import { change } from "../features/book/bookSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const Home = () => {
+  const book = useSelector((state) => state.book.value);
+  const dispatch = useDispatch();
+
   const [loading, setLoading] = useState(true);
 
   const [scope, animate] = useAnimate();
   const sequence = [
     [".letter", { opacity: [0, 1] }, { duration: 0.1, delay: stagger(0.05) }],
   ];
+
+  // useEffect(() => {
+  //   console.log(book);
+  // }, []);
 
   return (
     <div>
