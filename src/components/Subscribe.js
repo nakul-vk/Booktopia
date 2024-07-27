@@ -1,16 +1,15 @@
 import React from "react";
 import { PrimaryBtn, PrimaryInput } from "../components";
 import { IoIosArrowForward } from "react-icons/io";
-import { change } from "../features/book/bookSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { showMessage } from "../features/snackbar/snackbarSlice";
 
 const Subscribe = () => {
-  const book = useSelector((state) => state.book.value);
+  const text = useSelector((state) => state.snackbar.value);
   const dispatch = useDispatch();
 
   const changeBook = () => {
-    dispatch(change());
-    console.log(book);
+    dispatch(showMessage("Subscription successfull"));
   };
 
   return (
@@ -31,7 +30,7 @@ const Subscribe = () => {
           text="Subscribe"
           icon={<IoIosArrowForward />}
           styles="bg-yellow text-white h-24 md:h-28 lg:h-32"
-          handleClick={changeBook}
+          // handleClick={changeBook}
         />
       </div>
     </section>

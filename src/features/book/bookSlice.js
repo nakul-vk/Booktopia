@@ -6,8 +6,8 @@ export const bookSlice = createSlice({
     value: "The brothers Karamazov",
   },
   reducers: {
-    change: (state) => {
-      state.value = "To kill a mocking bird";
+    change: (state, action) => {
+      state.value = action.payload;
     },
   },
 });

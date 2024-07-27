@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import { color, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Rating } from "../components";
 import { Link } from "react-router-dom";
 import { stagger, useAnimate } from "framer-motion";
@@ -13,6 +13,7 @@ const Trending = () => {
       title: "The Brothers Karamazov",
       author: "Fyodor Dostoevsky",
       rating: "5",
+      genre: ["Thriller"],
       quote:
         "The more I love humanity in general, the less I love man in particular",
     },
@@ -22,6 +23,7 @@ const Trending = () => {
       title: "Pride and Prejudice",
       author: "Jane Austen",
       rating: "3.5",
+      genre: ["Romance"],
       quote:
         "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife",
     },
@@ -31,6 +33,7 @@ const Trending = () => {
       title: "Harry Potter and the Chamber of Secrets",
       author: "JK Rowling",
       rating: "4",
+      genre: ["Fiction", "Thriller"],
       quote:
         "Oh well... I'd just been thinking, if you had died, you'd have been welcome to share my toilet",
     },
@@ -40,6 +43,7 @@ const Trending = () => {
       title: "To Kill A Mockingbird",
       author: "Harper Lee",
       rating: "4.5",
+      genre: ["Thriller"],
       quote:
         "The one thing that doesn't abide by majority rule is a person's conscience",
     },
@@ -49,7 +53,18 @@ const Trending = () => {
       title: "Becoming",
       author: "Michelle Obama",
       rating: "2",
+      genre: ["Bigoraphy"],
       quote: "God gave us this platform for a reason, let's not waste it",
+    },
+    {
+      id: 6,
+      img: "https://via.placeholder.com/150/000000/FFFFFF/?text=y2meta.com",
+      title: "Crime and Punishment",
+      author: "Fyodor Dostoevsky",
+      rating: "5",
+      genre: ["Thriller"],
+      quote:
+        "To go wrong in one's own way is better than to go right in someone else's.",
     },
   ];
 
@@ -105,7 +120,7 @@ const Trending = () => {
         </button>
 
         <div className="book w-full flex self-end ">
-          <Link to={`/reviews/books`}>
+          <Link to={`/reviews/books/${data[currentIndex].title}`}>
             <motion.ul className="container py-5 list-none self-end font-bold text-xl transition-all sm:p-11">
               <motion.li className="quote italic font-normal text-base sm:text-xl">
                 "{data[currentIndex].quote}"

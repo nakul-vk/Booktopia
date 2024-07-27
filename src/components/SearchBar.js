@@ -12,14 +12,6 @@ const SearchBar = ({ val, changeVal }) => {
         value={val}
         onChange={(e) => changeVal(e.currentTarget.value)}
       />
-      {/* <button
-          className="mr-16 pl-5"
-          onClick={(e) => {
-            e.preventDefault();
-          }}
-        >
-          <FaSearch />
-        </button> */}
     </div>
   );
 };

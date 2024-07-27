@@ -8,7 +8,7 @@ const PrimaryBtn = ({ text, icon, styles, handleClick }) => {
       className={`w-full rounded-full p-5 font-spline font-bold flex justify-between items-center ${styles}`}
       onClick={(e) => {
         // e.preventDefault();
-        handleClick();
+        // handleClick();
       }}
     >
       {text}

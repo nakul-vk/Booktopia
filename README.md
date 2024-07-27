@@ -1,3 +1,5 @@
-add snackbar to every page.
-Add restricted functionality to submisssions
-Use redux to centralize states
+Fix snackbar - redux
+Add loading animation to browse, etc.
+Add functionality(redirect to review page) to trending and browse
+
+Develop backend
