@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Title,
   Navbar,
@@ -11,6 +11,14 @@ import { IoIosMenu, IoIosClose } from "react-icons/io";
 import { motion, useAnimate } from "framer-motion";
 
 const Browse = () => {
+  const [search, setSearch] = useState("");
+
+  const getBook = async (title) => {};
+
+  useEffect(() => {
+    getBook(search);
+  }, [search]);
+
   const [data, setData] = useState(filters);
   const [selectedFilters, setSelectedFilters] = useState([]);
 
@@ -69,7 +77,7 @@ const Browse = () => {
       </button>
       <Title />
       <Navbar />
-      <SearchBar />
+      <SearchBar val={search} changeVal={setSearch} />
       <div className="selected-filters w-10/12 mt-10 md:mt-16 relative left-1/2 -translate-x-1/2 flex">
         <h2 className="font-bold mr-10 pt-2 text-sm md:text-base">Filters:</h2>
         <div className="w-full flex flex-row flex-wrap gap-4 text-xs md:text-sm">
