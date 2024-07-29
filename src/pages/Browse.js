@@ -190,6 +190,7 @@ const Browse = () => {
         <section className="md:w-3/5">
           {result.map((book, index) => (
             <SearchResults
+              id={book.id}
               key={index}
               title={book.title}
               author={book.author}

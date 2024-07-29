@@ -11,6 +11,7 @@ import {
 import { useAnimate, motion, stagger } from "framer-motion";
 import { change } from "../features/book/bookSlice";
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 const Home = () => {
   const book = useSelector((state) => state.book.value);
@@ -22,10 +23,6 @@ const Home = () => {
   const sequence = [
     [".letter", { opacity: [0, 1] }, { duration: 0.1, delay: stagger(0.05) }],
   ];
-
-  // useEffect(() => {
-  //   console.log(book);
-  // }, []);
 
   return (
     <div>

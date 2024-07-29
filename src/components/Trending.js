@@ -120,7 +120,7 @@ const Trending = () => {
         </button>
 
         <div className="book w-full flex self-end ">
-          <Link to={`/reviews/books/${data[currentIndex].title}`}>
+          <Link to={`/reviews/books/${data[currentIndex].id}`}>
             <motion.ul className="container py-5 list-none self-end font-bold text-xl transition-all sm:p-11">
               <motion.li className="quote italic font-normal text-base sm:text-xl">
                 "{data[currentIndex].quote}"
