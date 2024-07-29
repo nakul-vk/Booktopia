@@ -9,6 +9,7 @@ module.exports = {
       },
       colors: {
         title: "#14213D",
+        pulse: "#172554",
         body: "#E5E5E5",
         yellow: "#FCA311",
         quotes: "#f7820c",

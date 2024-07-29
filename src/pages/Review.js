@@ -17,7 +17,6 @@ const Review = () => {
     const { data } = await axios.get(
       `http://localhost:5555/reviews/books/${id}`
     );
-    console.log(data);
     setBook(data);
     setLoading(false);
   };
