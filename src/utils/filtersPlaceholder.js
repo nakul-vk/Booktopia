@@ -4,8 +4,6 @@ export const filters = [
     values: [
       "Fyodor Dostoevsky",
       "J K Rowling",
-      "Rudyard Kipling",
-      "Michelle Obama",
       "Jane Austen",
       "Harper Lee",
       "Sir Arthur Conan Doyle",
@@ -21,6 +19,8 @@ export const filters = [
       "Biography",
       "Sci-Fi",
       "Thriller",
+      "Romance",
+      "History",
     ],
   },
   { filter: "Ratings", values: [3, 3.5, 4, 4.5, 5] },

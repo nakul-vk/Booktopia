@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 const PrimaryInput = ({ type, placeholder, styles }) => {
   return (
     <motion.input
+      autoCorrect="false"
       whileFocus={{ scale: 1.05, boxShadow: "0px 4px 7px rgba(0,0,0,0.6)" }}
       type={type}
       name="email"
