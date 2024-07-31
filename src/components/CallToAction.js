@@ -7,7 +7,7 @@ const CallToAction = () => {
   return (
     <section className="cta pt-5 md:pt-16" id="reviews">
       <div className=" relative left-1/2 -translate-x-1/2 w-10/12 flex flex-col items-center mt-5 md:mt-10 font-spline font-bold text-3xl md:text-5xl lg:text-6xl">
-        <Link to="/reviews" className="w-full">
+        <Link to="/search" className="w-full">
           <PrimaryBtn
             text="Browse Reviews"
             icon={<IoIosArrowForward />}

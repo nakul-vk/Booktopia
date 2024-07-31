@@ -39,8 +39,8 @@ const App = () => {
       <div ref={scope} className="overflow-hidden">
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path={`/reviews/books/*`} element={<Review />} />
-          <Route path={`/reviews`} element={<Browse />} />
+          <Route path={`/books/reviews/*`} element={<Review />} />
+          <Route path={`/search`} element={<Browse />} />
           <Route path={`/request`} element={<Request />} />
           <Route path="/admin" element={<Login />} />
         </Routes>
