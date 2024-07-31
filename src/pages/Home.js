@@ -9,9 +9,7 @@ import {
   Footer,
 } from "../components";
 import { useAnimate, motion, stagger } from "framer-motion";
-import { change } from "../features/book/bookSlice";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
 
 const Home = () => {
   const book = useSelector((state) => state.book.value);
@@ -65,7 +63,7 @@ const Home = () => {
         <SocialNetwork />
       </section>
       <CallToAction />
-      <section className="metrics flex justify-center text-title">
+      {/* <section className="metrics flex justify-center text-title">
         <div className="w-10/12 flex flex-col sm:flex-row justify-between">
           <div className="pt-10">
             <h2 className="font-fascinate text-5xl sm:text-7xl">101</h2>
@@ -80,7 +78,7 @@ const Home = () => {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
       <Subscribe />
       <Footer />
     </div>

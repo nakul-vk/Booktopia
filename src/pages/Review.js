@@ -15,7 +15,7 @@ const Review = () => {
 
   const getBook = async (id) => {
     const { data } = await axios.get(
-      `http://localhost:5555/reviews/books/${id}`
+      `http://localhost:5555/books/reviews/${id}`
     );
     setBook(data);
     setLoading(false);

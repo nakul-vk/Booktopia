@@ -62,13 +62,6 @@ const Request = () => {
         <div className="w-full lg:w-2/3 self-end ml-5 text-xl md:text-3xl ">
           <form action="" className="flex flex-col items-center">
             {inputs.map(({ placeholder, type }, index) => (
-              /* <input
-                type={type}
-                inputMode={type === "number" && "numeric"}
-                className="outline-none w-full  border-solid border-yellow border-4 rounded-full p-5  text-title  font-spline font-bold mb-5"
-                key={index}
-                placeholder={placeholder}
-              /> */
               <PrimaryInput
                 key={index}
                 type={type}
@@ -77,18 +70,6 @@ const Request = () => {
                 handleClick={handleClick}
               />
             ))}
-            {/* <button
-              className="text-title w-full bg-white p-5 font-spline font-bold flex justify-between items-center text-3xl border-black border-4 rounded-full"
-              onClick={(e) => {
-                e.preventDefault();
-                getRandomQuote();
-              }}
-            >
-              Submit
-              <span>
-                <IoIosArrowForward />
-              </span>
-            </button> */}
             <PrimaryBtn
               text="Submit"
               icon={<IoIosArrowForward />}

@@ -11,12 +11,8 @@ const Trending = () => {
   const [loading, setLoading] = useState(true);
 
   const getTrending = async () => {
-    const { data } = await axios.get("http://localhost:5555/trending");
+    const { data } = await axios.get("http://localhost:5555/books/trending");
     setTrending(data);
-    // setTimeout(() => {
-    //   setLoading(false);
-    //   animate(rightSequence);
-    // }, 1500);
     setLoading(false);
     animate(rightSequence);
   };
@@ -58,28 +54,32 @@ const Trending = () => {
       ref={scope}
       className="trending text-left w-10/12 relative left-1/2 -translate-x-1/2 text-base mt-16 pb-16 font-spline text-body"
     >
-      {!loading && (
-        /* ? (
+      {loading ? (
         <>
-          <div className="bg-img absolute -z-20 w-full h-96 rounded-lg overflow-hidden bg-title" />
+          <div
+            className="bg-img absolute -z-20 w-full h-96 rounded-lg overflow-hidden "
+            style={{
+              background: `linear-gradient(0deg, rgba(1,40,55,1) 0%, rgba(1,40,57,0.44870448179271705) 97%)`,
+            }}
+          />
           <div className="container rounded-lg w-full h-96 text-body mt-11 flex justify-between group overflow-y-hidden">
             <button className=" text-3xl md:text-5xl lg:text-6xl">
               <IoIosArrowBack />
             </button>
             <div className="book w-full flex self-end ">
-              <div className="container w-full animate-pulse list-none self-end font-bold text-xl transition-all sm:p-11 ">
-                <div className="quote bg-pulse w-full  italic font-normal text-base sm:text-xl rounded-lg py-5 mb-2"></div>
-                <div className="text-xl py-5 mb-2 sm:text-3xl bg-pulse  w-1/2  rounded-lg"></div>
-                <div className="text-base py-5 mb-2 sm:text-xl bg-pulse  w-1/2  rounded-lg"></div>
-                <div className="text-base py-5 mb-2 sm:text-xl  bg-pulse w-1/3  rounded-lg"></div>
-              </div>
+              <ul className="container w-full animate-pulse list-none self-end py-5 sm:p-11">
+                <li className="bg-slate-600 w-3/4 rounded-lg h-7"></li>
+                <li className="bg-slate-600 w-1/3 rounded-lg h-10 mt-1"></li>
+                <li className="bg-slate-600 w-1/3 rounded-lg h-7 mt-1"></li>
+                <li className="bg-slate-600 w-1/5 rounded-lg h-7 mt-1"></li>
+              </ul>
             </div>
             <button className=" text-3xl md:text-5xl lg:text-6xl">
               <IoIosArrowForward />
             </button>
           </div>
         </>
-      ) : */
+      ) : (
         <>
           <motion.div
             className="bg-img absolute -z-20 w-full h-96 rounded-lg overflow-hidden"

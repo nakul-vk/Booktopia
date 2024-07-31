@@ -27,16 +27,20 @@ const Browse = () => {
 
   const getBook = async (value) => {
     if (value !== "") {
-      const { data } = await axios.get(`http://localhost:5555/books/${value}`);
+      const { data } = await axios.get(
+        `http://localhost:5555/books/search/${value}`
+      );
       setResult(data);
     }
   };
 
   const getFiltered = async (filter) => {
-    const { data } = await axios.get(
-      `http://localhost:5555/books/filters/${filter}`
-    );
-    setResult(data);
+    if (filter.length !== 0) {
+      const { data } = await axios.get(
+        `http://localhost:5555/books/filters/${filter}`
+      );
+      setResult(data);
+    }
   };
 
   useEffect(() => {
