@@ -10,6 +10,7 @@ import {
 } from "../components";
 import { useAnimate, motion, stagger } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 const Home = () => {
   const book = useSelector((state) => state.book.value);

@@ -12,6 +12,7 @@ const CallToAction = () => {
             text="Browse Reviews"
             icon={<IoIosArrowForward />}
             styles="bg-title text-white h-24 md:h-28 lg:h-32"
+            handleClick={() => {}}
           />
         </Link>
         <Link to="/request" className="w-full mt-10">
@@ -19,7 +20,7 @@ const CallToAction = () => {
             text="Request Review"
             icon={<IoIosArrowForward />}
             styles="border-solid border-title border-4 text-title h-24 md:h-28 lg:h-32"
-            // handleClick={changeBook}
+            handleClick={() => {}}
           />
         </Link>
       </div>

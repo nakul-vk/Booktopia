@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PrimaryBtn, PrimaryInput } from "../components";
 import { IoIosArrowForward } from "react-icons/io";
 import { useSelector, useDispatch } from "react-redux";
 import { showMessage } from "../features/snackbar/snackbarSlice";
+import axios from "axios";
 
 const Subscribe = () => {
   const text = useSelector((state) => state.snackbar.value);
   const dispatch = useDispatch();
 
-  const changeBook = () => {
-    dispatch(showMessage("Subscription successfull"));
+  const [user, setUser] = useState();
+
+  const subscribe = async () => {
+    try {
+      const { data } = await axios.post("http://localhost:5555/user/", {
+        user: user,
+      });
+      console.log(data);
+    } catch (error) {
+      console.error();
+    }
+    //Need to connect both results to snack bar
   };
 
   return (
@@ -22,6 +33,8 @@ const Subscribe = () => {
           Join Now
         </h1>
         <PrimaryInput
+          val={user}
+          setVal={setUser}
           type="email"
           placeholder="name@gmail.com"
           styles="h-24 md:h-28 lg:h-32 m-10 border-yellow text-title"
@@ -30,7 +43,7 @@ const Subscribe = () => {
           text="Subscribe"
           icon={<IoIosArrowForward />}
           styles="bg-yellow text-white h-24 md:h-28 lg:h-32"
-          // handleClick={changeBook}
+          handleClick={subscribe}
         />
       </div>
     </section>
