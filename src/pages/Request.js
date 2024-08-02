@@ -3,11 +3,6 @@ import { Title, Navbar, PrimaryBtn, PrimaryInput } from "../components";
 import { IoIosArrowForward } from "react-icons/io";
 
 const Request = () => {
-  const inputs = [
-    { placeholder: "Title", type: "text" },
-    { placeholder: "Author", type: "text" },
-    { placeholder: "Year", type: "number" },
-  ];
   const quotes = [
     {
       quote:
@@ -55,25 +50,32 @@ const Request = () => {
       <Title />
       <Navbar />
       <section className=" w-10/12 relative left-1/2 -translate-x-1/2 flex flex-col-reverse lg:flex-row items-center justify-center pt-12 pb-12">
-        <div className="w-full lg:w-1/3 mt-10 lg:mt-0 bg-title text-white rounded-lg px-10 py-20 text-xl md:text-3xl">
+        <div className="w-full lg:w-1/3 mt-5 md:mt-10 lg:mt-0 text-title rounded-lg lg:px-10 lg:py-20 text-base md:text-xl md:px-2">
           <h2 className="italic">"{quotes[currentIndex].quote}"</h2>
           <h2 className="font-bold mt-10">- {quotes[currentIndex].quoter}</h2>
         </div>
-        <div className="w-full lg:w-2/3 self-end ml-5 text-xl md:text-3xl ">
-          <form action="" className="flex flex-col items-center">
-            {inputs.map(({ placeholder, type }, index) => (
-              <PrimaryInput
-                key={index}
-                type={type}
-                placeholder={placeholder}
-                styles="m-5 border-yellow text-title"
-                handleClick={handleClick}
-              />
-            ))}
+        <div className="w-full lg:w-2/3 self-end lg:ml-5 text-xl md:text-3xl ">
+          <form className="flex flex-col items-center">
+            <PrimaryInput
+              type="text"
+              placeholder="Title"
+              styles="mt-2 md:mt-5 border-yellow text-title"
+            />
+            <PrimaryInput
+              type="text"
+              placeholder="Author"
+              styles="mt-2 md:mt-7 border-yellow text-title"
+            />
+            <PrimaryInput
+              type="text"
+              placeholder="Year"
+              styles="mt-2 md:mt-7 mb-2 md:mb-7 border-yellow text-title"
+            />
             <PrimaryBtn
               text="Submit"
               icon={<IoIosArrowForward />}
               styles="bg-yellow text-white h-16 md:h-24"
+              handleClick={() => console.log("Button clicked")}
             />
           </form>
         </div>
