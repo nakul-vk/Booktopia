@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Title, Navbar, PrimaryBtn, PrimaryInput } from "../components";
 import { IoIosArrowForward } from "react-icons/io";
+import { motion } from "framer-motion";
+import axios from "axios";
 
 const Request = () => {
   const quotes = [
@@ -37,8 +39,23 @@ const Request = () => {
     setCurrentIndex(Math.floor(Math.random() * quotes.length));
   };
 
-  const handleClick = () => {
-    getRandomQuote();
+  const [data, setData] = useState({ title: "", author: "", year: "" });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
+  };
+
+  const handleClick = async () => {
+    const { title, author, year } = data;
+    try {
+      if (title == "" || author == "" || year == "")
+        throw new Error("Values missing");
+      const result = await axios.post("http://localhost:5555/requests/", data);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+    //Add snackbar to display results and errors.
   };
 
   useEffect(() => {
@@ -56,27 +73,59 @@ const Request = () => {
         </div>
         <div className="w-full lg:w-2/3 self-end lg:ml-5 text-xl md:text-3xl ">
           <form className="flex flex-col items-center">
-            <PrimaryInput
+            <motion.input
+              name="title"
+              autoCorrect="false"
+              whileFocus={{
+                scale: 1.05,
+                boxShadow: "0px 4px 7px rgba(0,0,0,0.6)",
+              }}
+              className={`w-full border-solid  border-4 rounded-full p-5  font-spline font-bold outline-none mt-2 md:mt-5 border-yellow text-title`}
               type="text"
               placeholder="Title"
-              styles="mt-2 md:mt-5 border-yellow text-title"
+              onChange={handleChange}
+              value={data.title}
             />
-            <PrimaryInput
+            <motion.input
+              name="author"
+              autoCorrect="false"
+              whileFocus={{
+                scale: 1.05,
+                boxShadow: "0px 4px 7px rgba(0,0,0,0.6)",
+              }}
+              className={`w-full border-solid  border-4 rounded-full p-5  font-spline font-bold outline-none mt-2 md:mt-5 border-yellow text-title`}
               type="text"
               placeholder="Author"
-              styles="mt-2 md:mt-7 border-yellow text-title"
+              onChange={handleChange}
+              value={data.author}
             />
-            <PrimaryInput
+            <motion.input
+              name="year"
+              autoCorrect="false"
+              whileFocus={{
+                scale: 1.05,
+                boxShadow: "0px 4px 7px rgba(0,0,0,0.6)",
+              }}
+              className={`w-full border-solid  border-4 rounded-full p-5  font-spline font-bold outline-none mt-2 md:mt-5 border-yellow text-title`}
               type="text"
               placeholder="Year"
-              styles="mt-2 md:mt-7 mb-2 md:mb-7 border-yellow text-title"
+              onChange={handleChange}
+              value={data.year}
             />
-            <PrimaryBtn
+            <motion.button
               text="Submit"
-              icon={<IoIosArrowForward />}
-              styles="bg-yellow text-white h-16 md:h-24"
-              handleClick={() => console.log("Button clicked")}
-            />
+              className="w-full mt-2 md:mt-5 rounded-full p-5 font-spline font-bold flex justify-between items-center bg-yellow text-white h-16 md:h-24"
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0px 4px 7px rgba(0,0,0,0.6)",
+              }}
+              onClick={(e) => {
+                e.preventDefault();
+                handleClick();
+              }}
+            >
+              Submit <IoIosArrowForward />
+            </motion.button>
           </form>
         </div>
       </section>

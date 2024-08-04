@@ -9,18 +9,19 @@ const Subscribe = () => {
   const text = useSelector((state) => state.snackbar.value);
   const dispatch = useDispatch();
 
-  const [user, setUser] = useState();
+  const [user, setUser] = useState("");
 
   const subscribe = async () => {
     try {
+      if (user === "") throw new Error("Value missing");
       const { data } = await axios.post("http://localhost:5555/user/", {
         user: user,
       });
       console.log(data);
     } catch (error) {
-      console.error();
+      console.log(error);
     }
-    //Need to connect both results to snack bar
+    //Add snackbar to display results and errors.
   };
 
   return (

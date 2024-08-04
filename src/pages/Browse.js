@@ -130,7 +130,11 @@ const Browse = () => {
           ))}
         </section>
         <section className="md:w-3/5">
-          {result &&
+          {result.length === 0 && search !== "" ? (
+            <h3 className="font-bold opacity-25 text-2xl lg:text-5xl">
+              Not Found
+            </h3>
+          ) : (
             result.map((book, index) => (
               <SearchResults
                 id={book.id}
@@ -140,7 +144,8 @@ const Browse = () => {
                 rating={book.rating}
                 cover={book.img}
               />
-            ))}
+            ))
+          )}
         </section>
       </section>
     </section>
