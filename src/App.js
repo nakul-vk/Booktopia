@@ -9,7 +9,7 @@ const App = () => {
       <div className="overflow-hidden">
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path={`/books/reviews/*`} element={<Review />} />
+          <Route path={`/books/reviews/:id`} element={<Review />} />
           <Route path={`/search`} element={<Browse />} />
           <Route path={`/request`} element={<Request />} />
           <Route path="/admin" element={<Login />} />
