@@ -1,27 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { PrimaryBtn, PrimaryInput } from "../components";
 import { IoIosArrowForward } from "react-icons/io";
-import { useSelector, useDispatch } from "react-redux";
-import { showMessage } from "../features/snackbar/snackbarSlice";
+import { useDispatch } from "react-redux";
+import { showSnackBar } from "../features/snackbar/snackbarSlice";
 import axios from "axios";
 
 const Subscribe = () => {
-  const text = useSelector((state) => state.snackbar.value);
   const dispatch = useDispatch();
 
   const [user, setUser] = useState("");
 
   const subscribe = async () => {
     try {
-      if (user === "") throw new Error("Value missing");
+      if (user === "") throw new Error("Email not provided");
       const { data } = await axios.post("http://localhost:5555/user/", {
         user: user,
       });
-      console.log(data);
+      dispatch(
+        showSnackBar({
+          message: data.message,
+          type: data.type,
+          open: true,
+        })
+      );
     } catch (error) {
-      console.log(error);
+      dispatch(
+        showSnackBar({ message: error.message, type: "error", open: true })
+      );
     }
-    //Add snackbar to display results and errors.
   };
 
   return (

@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Title, Navbar, PrimaryBtn, PrimaryInput } from "../components";
+import { Title, Navbar } from "../components";
 import { IoIosArrowForward } from "react-icons/io";
 import { motion } from "framer-motion";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { showSnackBar } from "../features/snackbar/snackbarSlice";
 
 const Request = () => {
+  const dispatch = useDispatch();
+
   const quotes = [
     {
       quote:
@@ -48,14 +52,17 @@ const Request = () => {
   const handleClick = async () => {
     const { title, author, year } = data;
     try {
-      if (title == "" || author == "" || year == "")
-        throw new Error("Values missing");
+      if (title === "" || author === "" || year === "")
+        throw new Error("All fields are required");
       const result = await axios.post("http://localhost:5555/requests/", data);
-      console.log(result);
+      dispatch(
+        showSnackBar({ message: result.data, type: "success", open: true })
+      );
     } catch (error) {
-      console.log(error);
+      dispatch(
+        showSnackBar({ message: error.message, type: "error", open: true })
+      );
     }
-    //Add snackbar to display results and errors.
   };
 
   useEffect(() => {
