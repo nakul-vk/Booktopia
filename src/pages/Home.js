@@ -42,11 +42,15 @@ const Home = () => {
             viewport={{ once: true }}
             className="welcome-title inline-block"
           >
-            {"Welcome to Booktopia,".split("").map((letter, index) => (
-              <span
-                className={letter === "B" ? "letter text-yellow" : "letter"}
-                key={index}
-              >
+            {"Welcome to".split("").map((letter, index) => (
+              <span className="letter" key={index}>
+                {letter}
+              </span>
+            ))}
+          </motion.h2>{" "}
+          <motion.h2 className="welcome-text inline-block">
+            {`Booktopia`.split("").map((letter, index) => (
+              <span className="letter text-yellow" key={index}>
                 {letter}
               </span>
             ))}
