@@ -1,3 +1,3 @@
-Fix snackbar - redux
+Maybe add a loading gif
 
 Develop backend

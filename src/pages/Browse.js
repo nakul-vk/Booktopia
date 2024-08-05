@@ -10,6 +10,8 @@ import { filters } from "../utils/filtersPlaceholder";
 import { IoIosMenu, IoIosClose } from "react-icons/io";
 import { motion, useAnimate } from "framer-motion";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { showSnackBar } from "../features/snackbar/snackbarSlice";
 
 const Browse = () => {
   const [search, setSearch] = useState("");
@@ -25,12 +27,22 @@ const Browse = () => {
     }
   };
 
+  const dispatch = useDispatch();
+
   const getBook = async (value) => {
-    if (value !== "") {
-      const { data } = await axios.get(
-        `http://localhost:5555/books/search/${value}`
+    try {
+      if (value.startsWith(" ")) throw new Error("Invalid request!");
+      if (value !== "") {
+        value = value.toLowerCase();
+        const { data } = await axios.get(
+          `http://localhost:5555/books/search/${value}`
+        );
+        setResult(data);
+      }
+    } catch (error) {
+      dispatch(
+        showSnackBar({ message: error.message, type: "error", open: true })
       );
-      setResult(data);
     }
   };
 

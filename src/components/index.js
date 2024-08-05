@@ -4,7 +4,7 @@ export { default as SocialNetwork } from "./SocialNetwork";
 export { default as CallToAction } from "./CallToAction";
 export { default as Subscribe } from "./Subscribe";
 export { default as Footer } from "./Footer";
-export { default as BrandLoader } from "./BrandLoader";
+export { default as Loader } from "./Loader";
 // export { default as Promotion } from "./Promotion";
 export { default as Trending } from "./Trending";
 export { default as Rating } from "./Rating";

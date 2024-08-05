@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Title, Navbar, Rating, Quotes, Footer } from "../components";
 import { motion } from "framer-motion";
 import axios from "axios";
+import { camelize } from "../utils/camelize";
 
 const Review = () => {
   const [book, setBook] = useState({});
@@ -39,8 +40,10 @@ const Review = () => {
             }}
           >
             <motion.div className="list-disc self-end font-bold text-xl transition-all p-12 text-white">
-              <motion.p className="text-xl sm:text-3xl">{book.title}</motion.p>
-              <p className="text-base sm:text-xl">{book.author}</p>
+              <motion.p className="text-xl sm:text-3xl">
+                {camelize(book.title)}
+              </motion.p>
+              <p className="text-base sm:text-xl">{camelize(book.author)}</p>
               {<Rating className="text-base sm:text-xl" rating={book.rating} />}
             </motion.div>
           </section>

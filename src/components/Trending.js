@@ -5,6 +5,7 @@ import { Rating } from "../components";
 import { Link } from "react-router-dom";
 import { stagger, useAnimate } from "framer-motion";
 import axios from "axios";
+import { camelize } from "../utils/camelize";
 
 const Trending = () => {
   const [trending, setTrending] = useState([]);
@@ -102,10 +103,10 @@ const Trending = () => {
                     "{trending[currentIndex].quote[0]}"
                   </motion.li>
                   <motion.li className="text-xl sm:text-3xl">
-                    {trending[currentIndex].title}
+                    {camelize(trending[currentIndex].title)}
                   </motion.li>
                   <motion.li className="text-base sm:text-xl">
-                    {trending[currentIndex].author}
+                    {camelize(trending[currentIndex].author)}
                   </motion.li>
                   <motion.li>
                     <Rating

@@ -1,5 +1,6 @@
 import React from "react";
 import { Rating } from "../components";
+import { camelize } from "../utils/camelize";
 
 const Filters = ({ placeholder, isSelected, addFilter }) => {
   const className = "filter px-2 py-1 md:px-5 md:py-2 rounded-full";
@@ -18,7 +19,11 @@ const Filters = ({ placeholder, isSelected, addFilter }) => {
       }
       onClick={handleClick}
     >
-      {Number(placeholder) ? <Rating rating={placeholder} /> : placeholder}
+      {Number(placeholder) ? (
+        <Rating rating={placeholder} />
+      ) : (
+        camelize(placeholder)
+      )}
     </button>
   );
 };
