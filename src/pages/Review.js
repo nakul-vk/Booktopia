@@ -54,14 +54,14 @@ const Review = () => {
             </p>
             <h4 className="mt-10 font-bold text-xl">Plot Summary:</h4>
             <p>{book.review.summary}</p>
-            <Quotes quote={book.quote[1]} />
+            <Quotes quote={book.quotes[1]} />
             <h4 className="mt-10 font-bold text-xl">Characterization:</h4>
             <p>{book.review.characterization}</p>
             <h4 className="mt-10 font-bold text-xl">Themes:</h4>
             <p>{book.review.themes}</p>
             <h4 className="mt-10 font-bold text-xl">Conclusion:</h4>
             <p>{book.review.conclusion}</p>
-            <Quotes quote={book.quote[2]} />
+            <Quotes quote={book.quotes[2]} />
           </section>
         </>
       )}

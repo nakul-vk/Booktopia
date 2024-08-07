@@ -97,10 +97,10 @@ const Trending = () => {
             </button>
 
             <div className="book w-full flex self-end ">
-              <Link to={`/books/reviews/${trending[currentIndex].id}`}>
+              <Link to={`/books/reviews/${trending[currentIndex]._id}`}>
                 <motion.ul className="container py-5 list-none self-end font-bold text-xl transition-all sm:p-11">
                   <motion.li className="quote italic font-normal text-base sm:text-xl">
-                    "{trending[currentIndex].quote[0]}"
+                    "{trending[currentIndex].quotes[0]}"
                   </motion.li>
                   <motion.li className="text-xl sm:text-3xl">
                     {camelize(trending[currentIndex].title)}

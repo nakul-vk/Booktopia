@@ -1,6 +1,6 @@
 export const filters = [
   {
-    filter: "Authors",
+    filter: "author",
     values: [
       "fyodor dostoevsky",
       "j k rowling",
@@ -11,7 +11,7 @@ export const filters = [
     ],
   },
   {
-    filter: "Genres",
+    filter: "genre",
     values: [
       "self-help",
       "fiction",
@@ -23,5 +23,5 @@ export const filters = [
       "history",
     ],
   },
-  { filter: "Ratings", values: [3, 3.5, 4, 4.5, 5] },
+  { filter: "rating", values: [3, 3.5, 4, 4.5, 5] },
 ];

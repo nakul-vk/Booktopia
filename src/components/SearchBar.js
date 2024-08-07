@@ -7,7 +7,7 @@ const SearchBar = ({ val, changeVal }) => {
         type="name"
         name="search"
         id="search"
-        placeholder="Title, Author"
+        placeholder="Title/Author"
         className="outline-none ml-3 md:ml-7 lg:ml-12 w-11/12"
         value={val}
         onChange={(e) => changeVal(e.currentTarget.value)}
