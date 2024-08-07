@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Title, Navbar } from "../components";
 import { IoIosArrowForward } from "react-icons/io";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -38,6 +39,7 @@ const Request = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const getRandomQuote = () => {
     setCurrentIndex(Math.floor(Math.random() * quotes.length));
@@ -50,20 +52,26 @@ const Request = () => {
   };
 
   const handleClick = async () => {
+    setLoading(true);
     const { title, author, year } = data;
     try {
       if (title === "" || author === "" || year === "")
         throw new Error("All fields are required");
       if (!Number(year)) throw new Error("Year should be a number");
-      const result = await axios.post("http://localhost:5555/requests/", data);
+      const result = await axios.post("http://localhost:5555/requests", data);
       dispatch(
-        showSnackBar({ message: result.data, type: "success", open: true })
+        showSnackBar({
+          message: result.data.message,
+          type: result.data.type,
+          open: true,
+        })
       );
     } catch (error) {
       dispatch(
         showSnackBar({ message: error.message, type: "error", open: true })
       );
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -132,7 +140,12 @@ const Request = () => {
                 handleClick();
               }}
             >
-              Submit <IoIosArrowForward />
+              Submit{" "}
+              {loading ? (
+                <AiOutlineLoading3Quarters className="animate-spin" />
+              ) : (
+                <IoIosArrowForward />
+              )}
             </motion.button>
           </form>
         </div>

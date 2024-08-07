@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { PrimaryBtn, PrimaryInput } from "../components";
 import { IoIosArrowForward } from "react-icons/io";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { showSnackBar } from "../features/snackbar/snackbarSlice";
 import axios from "axios";
@@ -9,11 +10,13 @@ const Subscribe = () => {
   const dispatch = useDispatch();
 
   const [user, setUser] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const subscribe = async () => {
+    setLoading(true);
     try {
       if (user === "") throw new Error("Email not provided");
-      const { data } = await axios.post("http://localhost:5555/user/", {
+      const { data } = await axios.post("http://localhost:5555/user", {
         user: user,
       });
       dispatch(
@@ -28,6 +31,7 @@ const Subscribe = () => {
         showSnackBar({ message: error.message, type: "error", open: true })
       );
     }
+    setLoading(false);
   };
 
   return (
@@ -48,7 +52,13 @@ const Subscribe = () => {
         />
         <PrimaryBtn
           text="Subscribe"
-          icon={<IoIosArrowForward />}
+          icon={
+            loading ? (
+              <AiOutlineLoading3Quarters className="animate-spin" />
+            ) : (
+              <IoIosArrowForward />
+            )
+          }
           styles="bg-yellow text-white h-24 md:h-28 lg:h-32"
           handleClick={subscribe}
         />
