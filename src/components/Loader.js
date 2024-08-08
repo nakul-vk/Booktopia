@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAnimate, stagger } from "framer-motion";
 
 const Loader = () => {
+  const [scope, animate] = useAnimate();
+
+  useEffect(() => {
+    if (scope.current) {
+      animate(
+        ".loader",
+        { y: [0, -15, 0] },
+        {
+          duration: 0.5,
+          delay: stagger(0.1),
+          repeat: Infinity,
+          repeatType: "loop",
+          repeatDelay: 0.5,
+        }
+      );
+    }
+  }, []);
+
   return (
-    <section className="loader flex justify-center items-center">
-      <h1 className="text-title font-bold font-fascinate  text-7xl md:text-8xl lg:text-9xl animate-bounce">
-        B
-      </h1>
-    </section>
+    <div className="flex flex-row w-fit gap-x-1" ref={scope}>
+      <div className="loader block w-7 h-7 bg-yellow rounded-full" />
+      <div className="loader block w-7 h-7 bg-yellow rounded-full" />
+      <div className="loader block w-7 h-7 bg-yellow rounded-full" />
+    </div>
   );
 };
 
