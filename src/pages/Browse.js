@@ -5,6 +5,7 @@ import {
   SearchBar,
   Filters,
   SearchResults,
+  Loader,
 } from "../components";
 import { filters } from "../utils/filtersPlaceholder";
 import { IoIosMenu, IoIosClose } from "react-icons/io";
@@ -17,6 +18,8 @@ import { camelize } from "../utils/camelize";
 const Browse = () => {
   const [search, setSearch] = useState("");
   const [result, setResult] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [found, setFound] = useState(true);
 
   const [selectedFilters, setSelectedFilters] = useState({
     author: [],
@@ -41,36 +44,57 @@ const Browse = () => {
   const dispatch = useDispatch();
 
   const getBook = async (value) => {
+    setFound(true); // To aviod rendering Not found if the search bar is cleared after values are input.
     try {
-      if (value.startsWith(" ")) throw new Error("Invalid request!"); //when search starts with whitespace, the get requests a page with path /books/search which results in an error.
+      if (value.startsWith(" ")) throw new Error("Invalid request!");
       if (value !== "") {
+        setLoading(true); // Placed here on the basis that it does not trigger loader while rendering the page.
         value = value.toLowerCase();
-        const { data } = await axios.get(
-          `http://localhost:5555/books/search/`,
-          { params: { value } }
-        );
+        const { data } = await axios.get(`http://localhost:5555/books/search`, {
+          params: { value },
+        });
+        if (data.length === 0) {
+          setFound(false);
+        } else {
+          setFound(true);
+        }
         setResult(data);
-        console.log(data);
+      } else {
+        setResult([]); // To render nothing if there is no input in search bar.
       }
     } catch (error) {
       dispatch(
         showSnackBar({ message: error.message, type: "error", open: true })
       );
     }
+    setTimeout(() => {
+      setLoading(false);
+    }, 2500);
   };
 
   const getFiltered = async (filter) => {
-    console.log(filter);
+    setFound(true); // To aviod rendering Not found if filters are cleared after selection.
     if (
       filter["author"].length !== 0 ||
       filter["genre"].length !== 0 ||
       filter["rating"].length !== 0
     ) {
-      const { data } = await axios.get(`http://localhost:5555/books/filters/`, {
+      setLoading(true); // Placed here on the basis that it does not trigger loader while rendering the page.
+      const { data } = await axios.get(`http://localhost:5555/books/filters`, {
         params: filter,
       });
+      if (data.length === 0) {
+        setFound(false);
+      } else {
+        setFound(true);
+      }
       setResult(data);
+    } else {
+      setResult([]); // To render nothing if there is no filter selection.
     }
+    setTimeout(() => {
+      setLoading(false);
+    }, 2500);
   };
 
   useEffect(() => {
@@ -185,11 +209,11 @@ const Browse = () => {
           ))}
         </section>
         <section className="md:w-3/5">
-          {result.length === 0 &&
-          (search !== "" ||
-            selectedFilters["author"].length !== 0 ||
-            selectedFilters["genre"].length !== 0 ||
-            selectedFilters["rating"].length !== 0) ? (
+          {loading ? (
+            <div className="loader-container mt-10 w-fit relative left-1/2 -translate-x-1/2">
+              <Loader />
+            </div>
+          ) : !found ? (
             <h3 className="font-bold opacity-25 text-2xl lg:text-5xl">
               Not Found
             </h3>
