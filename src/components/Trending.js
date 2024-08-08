@@ -15,7 +15,9 @@ const Trending = () => {
     const { data } = await axios.get("http://localhost:5555/books/trending");
     setTrending(data);
     setLoading(false);
-    animate(rightSequence);
+    if (scope.current) {
+      animate(rightSequence);
+    }
   };
 
   const [currentIndex, setCurrentIndex] = useState(0);
