@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Title, Navbar, Rating, Quotes, Footer } from "../components";
+import { Title, Navbar, Rating, Quotes, Footer, Loader } from "../components";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { camelize } from "../utils/camelize";
@@ -19,7 +19,9 @@ const Review = () => {
       `http://localhost:5555/books/reviews/${id}`
     );
     setBook(data);
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2500);
   };
 
   useEffect(() => {
@@ -31,7 +33,11 @@ const Review = () => {
     <section className="w-screen min-h-screen  text-center text-title">
       <Title />
       <Navbar />
-      {!loading && (
+      {loading ? (
+        <div className="relative w-fit left-1/2 -translate-x-1/2 mt-44">
+          <Loader />
+        </div>
+      ) : (
         <>
           <section
             className="cover flex flex-row rounded-lg h-72 text-left w-10/12 relative left-1/2 -translate-x-1/2 text-base mt-12 font-spline "
@@ -63,9 +69,9 @@ const Review = () => {
             <p>{book.review.conclusion}</p>
             <Quotes quote={book.quotes[2]} />
           </section>
+          <Footer />
         </>
       )}
-      <Footer />
     </section>
   );
 };
