@@ -1,25 +1,30 @@
 import React, { useEffect } from "react";
-import { ImStarFull } from "react-icons/im";
 import { useAnimate, stagger } from "framer-motion";
 
 const Title = () => {
   const [scope, animate] = useAnimate();
 
-  const titleSequence = [
-    [".letter", { scale: [1, 1.2, 1] }, { duration: 0.5, delay: stagger(0.1) }],
-  ];
-
-  const randomNumberGenerator = () => {
-    const randomNumber = Math.floor(Math.random() * 76) + 25;
-    return randomNumber;
-  };
+  // const titleSequence = [
+  //   [
+  //     ".letter",
+  //     { scale: [1, 1.2, 1] },
+  //     {
+  //       duration: 0.5,
+  //       delay: stagger(0.1),
+  //       repeat: Infinity,
+  //       repeatDelay: 5,
+  //     },
+  //   ],
+  // ]; Open issue in framer-motion
 
   useEffect(() => {
-    setInterval(() => {
-      if (scope.current) {
-        animate(titleSequence);
-      }
-    }, 5000);
+    if (scope.current) {
+      animate(
+        ".letter",
+        { scale: [1, 1.2, 1] },
+        { duration: 0.5, delay: stagger(0.1), repeat: Infinity, repeatDelay: 5 }
+      );
+    }
   }, []);
 
   return (
