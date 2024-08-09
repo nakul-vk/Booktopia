@@ -70,9 +70,7 @@ const Browse = () => {
         showSnackBar({ message: error.message, type: "error", open: true })
       );
     }
-    setTimeout(() => {
-      setLoading(false);
-    }, 2500);
+    setLoading(false);
   };
 
   const getFiltered = async (filter) => {
@@ -98,9 +96,7 @@ const Browse = () => {
     } else {
       setResult([]); // To render nothing if there is no filter selection.
     }
-    setTimeout(() => {
-      setLoading(false);
-    }, 2500);
+    setLoading(false);
   };
 
   useEffect(() => {
