@@ -50,9 +50,12 @@ const Browse = () => {
       if (value !== "") {
         setLoading(true); // Placed here on the basis that it does not trigger loader while rendering the page.
         value = value.toLowerCase();
-        const { data } = await axios.get(`http://localhost:5555/books/search`, {
-          params: { value },
-        });
+        const { data } = await axios.get(
+          `https://booktopia-api.onrender.com/books/search`,
+          {
+            params: { value },
+          }
+        );
         if (data.length === 0) {
           setFound(false);
         } else {
@@ -80,9 +83,12 @@ const Browse = () => {
       filter["rating"].length !== 0
     ) {
       setLoading(true); // Placed here on the basis that it does not trigger loader while rendering the page.
-      const { data } = await axios.get(`http://localhost:5555/books/filters`, {
-        params: filter,
-      });
+      const { data } = await axios.get(
+        `https://booktopia-api.onrender.com/books/filters`,
+        {
+          params: filter,
+        }
+      );
       if (data.length === 0) {
         setFound(false);
       } else {

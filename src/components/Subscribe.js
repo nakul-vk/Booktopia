@@ -16,9 +16,12 @@ const Subscribe = () => {
     setLoading(true);
     try {
       if (user === "") throw new Error("Email not provided");
-      const { data } = await axios.post("http://localhost:5555/user", {
-        user: user,
-      });
+      const { data } = await axios.post(
+        "https://booktopia-api.onrender.com/user",
+        {
+          user: user,
+        }
+      );
       dispatch(
         showSnackBar({
           message: data.message,

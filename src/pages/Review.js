@@ -16,7 +16,7 @@ const Review = () => {
 
   const getBook = async (id) => {
     const { data } = await axios.get(
-      `http://localhost:5555/books/reviews/${id}`
+      `https://booktopia-api.onrender.com/reviews/${id}`
     );
     setBook(data);
     setTimeout(() => {

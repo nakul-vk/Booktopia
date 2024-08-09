@@ -12,7 +12,9 @@ const Trending = () => {
   const [loading, setLoading] = useState(true);
 
   const getTrending = async () => {
-    const { data } = await axios.get("http://localhost:5555/books/trending");
+    const { data } = await axios.get(
+      "https://booktopia-api.onrender.com/books/trending"
+    );
     setTrending(data);
     setLoading(false);
     if (scope.current) {

@@ -58,7 +58,10 @@ const Request = () => {
       if (title === "" || author === "" || year === "")
         throw new Error("All fields are required");
       if (!Number(year)) throw new Error("Year should be a number");
-      const result = await axios.post("http://localhost:5555/requests", data);
+      const result = await axios.post(
+        "https://booktopia-api.onrender.com/requests",
+        data
+      );
       dispatch(
         showSnackBar({
           message: result.data.message,
