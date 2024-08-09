@@ -10,18 +10,17 @@ const Review = () => {
 
   const getId = () => {
     const path = window.location.pathname;
+    console.log(path);
     const id = path.split("/")[path.split("/").length - 1];
     return id;
   };
 
   const getBook = async (id) => {
     const { data } = await axios.get(
-      `https://booktopia-api.onrender.com/reviews/${id}`
+      `https://booktopia-api.onrender.com/books/reviews/${id}`
     );
     setBook(data);
-    setTimeout(() => {
-      setLoading(false);
-    }, 2500);
+    setLoading(false);
   };
 
   useEffect(() => {
