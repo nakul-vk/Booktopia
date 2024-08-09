@@ -2,7 +2,7 @@
   "short_name": "Booktopia",
   "name": "Booktopia",
   "icons": [
-    { "src": "/favicon.ico", "type": "image/x-icon", "sizes": "16x16 32x32" }
+    { "src": "./favicon.ico", "type": "image/x-icon", "sizes": "16x16 32x32" }
   ],
   "start_url": ".",
   "display": "standalone"
