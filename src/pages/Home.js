@@ -18,7 +18,7 @@ const Home = () => {
 
   return (
     <div>
-      <section className="hero w-screen h-screen bg-yellow text-center">
+      <section className="hero w-screen min-h-screen bg-yellow text-center">
         <Title />
         <Navbar />
         <Trending />
