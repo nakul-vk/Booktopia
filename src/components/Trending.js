@@ -92,7 +92,7 @@ const Trending = () => {
               background: `linear-gradient(0deg, rgba(1,40,55,1) 0%, rgba(1,40,57,0.44870448179271705) 97%), url(${trending[currentIndex].img}) center/cover no-repeat fixed`,
             }}
           />
-          <div className="container rounded-lg w-full h-72 lg:h-96 text-body mt-11 flex justify-between group overflow-y-hidden">
+          <div className="container rounded-lg w-full h-72 lg:h-96 text-body flex justify-between group overflow-y-hidden">
             <button
               className=" text-3xl md:text-5xl lg:text-6xl"
               onClick={handleLeftClick}
