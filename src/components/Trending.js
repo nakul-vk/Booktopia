@@ -57,26 +57,26 @@ const Trending = () => {
   return (
     <section
       ref={scope}
-      className="trending text-left w-10/12 relative left-1/2 -translate-x-1/2 text-base mt-16 pb-16 font-spline text-body"
+      className="trending text-left w-10/12 relative top-1/2 -translate-y-2/3 left-1/2 -translate-x-1/2 text-base font-spline text-body"
     >
       {loading ? (
         <>
           <div
-            className="bg-img absolute -z-20 w-full h-96 rounded-lg overflow-hidden "
+            className="bg-img absolute -z-20 w-full h-72 lg:h-96 rounded-lg overflow-hidden "
             style={{
               background: `linear-gradient(0deg, rgba(1,40,55,1) 0%, rgba(1,40,57,0.44870448179271705) 97%)`,
             }}
           />
-          <div className="container rounded-lg w-full h-96 text-body mt-11 flex justify-between group overflow-y-hidden">
+          <div className="container rounded-lg w-full h-72 lg:h-96 text-body flex justify-between group overflow-y-hidden">
             <button className=" text-3xl md:text-5xl lg:text-6xl">
               <IoIosArrowBack />
             </button>
             <div className="book w-full flex self-end ">
               <ul className="container w-full animate-pulse list-none self-end py-5 sm:p-11">
-                <li className="bg-slate-600 w-3/4 rounded-lg h-7"></li>
-                <li className="bg-slate-600 w-1/3 rounded-lg h-10 mt-1"></li>
-                <li className="bg-slate-600 w-1/3 rounded-lg h-7 mt-1"></li>
-                <li className="bg-slate-600 w-1/5 rounded-lg h-7 mt-1"></li>
+                <li className="bg-slate-600 w-full rounded-lg h-5 lg:h-7"></li>
+                <li className="bg-slate-600 w-1/3 rounded-lg h-6 lg:h-7 mt-1"></li>
+                <li className="bg-slate-600 w-1/3 rounded-lg h-5 lg:h-7 mt-1"></li>
+                <li className="bg-slate-600 w-1/5 rounded-lg h-5 lg:h-7 mt-1"></li>
               </ul>
             </div>
             <button className=" text-3xl md:text-5xl lg:text-6xl">
@@ -87,12 +87,12 @@ const Trending = () => {
       ) : (
         <>
           <motion.div
-            className="bg-img absolute -z-20 w-full h-96 rounded-lg overflow-hidden"
+            className="bg-img absolute -z-20 w-full h-72 lg:h-96 rounded-lg overflow-hidden"
             style={{
               background: `linear-gradient(0deg, rgba(1,40,55,1) 0%, rgba(1,40,57,0.44870448179271705) 97%), url(${trending[currentIndex].img}) center/cover no-repeat fixed`,
             }}
           />
-          <div className="container rounded-lg w-full h-96 text-body mt-11 flex justify-between group overflow-y-hidden">
+          <div className="container rounded-lg w-full h-72 lg:h-96 text-body mt-11 flex justify-between group overflow-y-hidden">
             <button
               className=" text-3xl md:text-5xl lg:text-6xl"
               onClick={handleLeftClick}
