@@ -10,7 +10,6 @@ const Review = () => {
 
   const getId = () => {
     const path = window.location.pathname;
-    console.log(path);
     const id = path.split("/")[path.split("/").length - 1];
     return id;
   };
