@@ -9,14 +9,8 @@ import {
   Footer,
 } from "../components";
 import { useAnimate, motion, stagger } from "framer-motion";
-// import { useSelector, useDispatch } from "react-redux";
 
 const Home = () => {
-  // const book = useSelector((state) => state.book.value);
-  // const dispatch = useDispatch();
-
-  // const [loading, setLoading] = useState(true);
-
   const [scope, animate] = useAnimate();
   const sequence = [
     [".letter", { opacity: [0, 1] }, { duration: 0.1, delay: stagger(0.05) }],
@@ -24,7 +18,7 @@ const Home = () => {
 
   return (
     <div>
-      <section className="hero w-screen h-screen bg-yellow text-center">
+      <section className="hero w-screen min-h-screen bg-yellow text-center">
         <Title />
         <Navbar />
         <Trending />
@@ -32,7 +26,7 @@ const Home = () => {
       <section className="w-screen min-h-screen bg-title flex flex-col justify-between text-3xl text-body sm:text-5xl">
         <div
           ref={scope}
-          className="pt-10 pl-5 font-spline leading-loose h-full  font-bold lg:text-7xl lg:pt-20 lg:pl-32 lg:w-10/12"
+          className="pt-10 pl-5 font-spline h-full  font-bold lg:text-7xl lg:pt-20 lg:pl-32 lg:w-10/12"
         >
           <motion.h2
             whileInView={() => {
